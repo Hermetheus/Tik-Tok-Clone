@@ -3,7 +3,7 @@ import "./Video.css";
 import VideoFooter from "./VideoFooter";
 import VideoSidebar from "./VideoSidebar";
 
-function Video() {
+function Video({ url, channel, description, song, likes, messages, shares }) {
   const [playing, setPlaying] = useState(false);
   const videoRef = useRef(null);
 
@@ -21,17 +21,13 @@ function Video() {
     <div className="video">
       <video
         className="video__player"
-        src="https://v16m.tiktokcdn.com/151e486746f06f356458c6fea300b23f/5f29aa1c/video/tos/useast2a/tos-useast2a-ve-0068c003/5ae6c99267a4425381cd6924dd285eec/?a=1233&br=2988&bt=1494&cr=0&cs=0&dr=0&ds=3&er=&l=2020080218340401019019213111EB7F5D&lr=tiktok_m&mime_type=video_mp4&qs=0&rc=MzloeXQzaDNrdjMzaTczM0ApZDw0OjU5Ojs6NzQ2aDo1Nmdwc2dpaWhva19fLS02MTZzczJiLV40Ml80Ly8zMGIxLjI6Yw%3D%3D&vl=&vr="
+        src={url}
         loop
         ref={videoRef}
         onClick={onVideoPress}
       ></video>
-      <VideoFooter
-        channel="Herm"
-        description="Yeahhhhhhhhhhh"
-        song="jesus loves you"
-      />
-      <VideoSidebar likes={111} messages={222} shares={234} />
+      <VideoFooter channel={channel} description={description} song={song} />
+      <VideoSidebar likes={likes} messages={messages} shares={shares} />
     </div>
   );
 }
